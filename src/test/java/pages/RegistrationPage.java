@@ -1,7 +1,7 @@
-package components;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import components.CalendarComponent;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,22 +10,21 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     CalendarComponent calendar = new CalendarComponent();
-    SelenideElement titleLabel = $(".practice-form-wrapper"),
-            firstNameInput = $("#firstName"),
-            lastNameInput = $("#lastName"),
-            userEmailInput = $("#userEmail"),
-            genderWrapper = $("#genterWrapper"),
-            userNumberInput = $("#userNumber"),
-            dateOfBirthInput = $("#dateOfBirthInput"),
-            subjectsInput = $("#subjectsInput"),
-            hobbiesWrapper = $("#hobbiesWrapper"),
-            uploadPictureInput = $("#uploadPicture"),
-            currentAddressTextArea = $("#currentAddress"),
-            selectStateDropdown = $("#state"),
-            stateCityWrapper = $("#stateCity-wrapper"),
-            selectCityDropdown = $("#city"),
-            submitButton = $("#submit"),
-            userForm = $("#userForm");
+    SelenideElement titleLabel = $(".practice-form-wrapper");
+    SelenideElement firstNameInput = $("#firstName");
+    SelenideElement lastNameInput = $("#lastName");
+    SelenideElement userEmailInput = $("#userEmail");
+    SelenideElement genderWrapper = $("#genterWrapper");
+    SelenideElement userNumberInput = $("#userNumber");
+    SelenideElement dateOfBirthInput = $("#dateOfBirthInput");
+    SelenideElement subjectsInput = $("#subjectsInput");
+    SelenideElement hobbiesWrapper = $("#hobbiesWrapper");
+    SelenideElement uploadPictureInput = $("#uploadPicture");
+    SelenideElement currentAddressTextArea = $("#currentAddress");
+    SelenideElement selectStateDropdown = $("#state");
+    SelenideElement stateCityWrapper = $("#stateCity-wrapper");
+    SelenideElement selectCityDropdown = $("#city");
+    SelenideElement submitButton = $("#submit");
 
 
     public RegistrationPage openPage(String pageAddress) {
@@ -107,22 +106,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage clickSubmitButton() {
+    public void clickSubmitButton() {
         submitButton.click();
-        return this;
     }
-
-    public RegistrationPage userFormContainsValidatedClass(String className) {
-        userForm.shouldHave(cssClass(className));
-        return this;
-    }
-
-    public RegistrationPage containsRequiredCssValues(String element) {
-        $(element)
-                .shouldHave(cssValue("border-color", "rgb(220, 53, 69)"))
-                .shouldHave(attribute("required"));
-        return this;
-    }
-
 
 }
