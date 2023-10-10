@@ -1,5 +1,5 @@
 package utils;
-
+import com.github.javafaker.Faker;
 import java.security.SecureRandom;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static org.apache.commons.lang3.StringUtils.length;
 
 public class RandomUtils {
+    static Faker faker = new Faker();
     public static String state;
     public static String getRandomNumbers(int len) {
 
@@ -34,28 +35,28 @@ public class RandomUtils {
     public static String getRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
 
-        return getRandomItemFromArray(genders);
+        return faker.options().option(genders);
     }
 
     public static String getRandomSubject() {
         String[] subject = {"Maths", "Chemistry", "Hindi"};
-        return getRandomItemFromArray(subject);
+        return faker.options().option(subject);
     }
 
     public static String getRandomMonth() {
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
-        return getRandomItemFromArray(month);
+        return faker.options().option(month);
     }
 
     public static String getRandomHobbies() {
         String[] hobbies = {"Sports", "Reading", "Music"};
-        return getRandomItemFromArray(hobbies);
+        return faker.options().option(hobbies);
     }
 
     public static String getRandomState() {
         String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-        state = getRandomItemFromArray(states);
+        state = faker.options().option(states);
         return state;
     }
 
@@ -64,28 +65,23 @@ public class RandomUtils {
         String city = null;
         if (Objects.equals(state, "NCR")) {
             String[] cities = {"Delhi", "Gurgaon", "Noida"};
-            city = getRandomItemFromArray(cities);
+            city = faker.options().option(cities);
         }
         if (Objects.equals(state, "Uttar Pradesh")) {
             String[] cities = {"Agra", "Lucknow", "Merrut"};
-            city = getRandomItemFromArray(cities);
+            city = faker.options().option(cities);
         }
         if (Objects.equals(state, "Haryana")) {
             String[] cities = {"Karnal", "Panipat"};
-            city = getRandomItemFromArray(cities);
+            city = faker.options().option(cities);
         }
         if (Objects.equals(state, "Rajasthan")) {
             String[] cities = {"Jaipur", "Jaiselmer"};
-            city = getRandomItemFromArray(cities);
+            city = faker.options().option(cities);
         }
 
         return city;
     }
 
-    public static String getRandomItemFromArray(String[] array) {
-        int index = getRandomInt(0, array.length - 1);
-
-        return array[index];
-    }
 
 }
